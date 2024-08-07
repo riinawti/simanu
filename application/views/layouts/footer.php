@@ -14,6 +14,7 @@
   <script src="<?= base_url('public/assets/js/validate.js') ?>"></script>
   <script src="<?= base_url('public/assets/js/main.js') ?>"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     let table = new DataTable('#myTable');
     // In your Javascript (external .js resource or <script> tag)
@@ -23,7 +24,7 @@
 
     $(document).ready(function() {
       $.ajax({
-        url: '/barang/getDataAjax',
+        url: '/simanu/barang/getDataAjax',
         type: 'get',
         success: function(response) {
           tes(response)
@@ -137,6 +138,66 @@
 
           // Tambahkan elemen baru setelah elemen dengan id 'jenis'
           $('#status').after(html);
+        }
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const grafikstok = <?php echo json_encode($grafikstok); ?>;
+
+      const ctx = document.getElementById('myChart').getContext('2d');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: grafikstok.map(product => product.nama_barang),
+          datasets: [{
+            label: 'Jumlah stok',
+            data: grafikstok.map(product => product.stok),
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top'
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  let label = context.dataset.label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+                  if (context.parsed.y !== null) {
+                    label += context.parsed.y;
+                  }
+                  return label;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Nama Barang'
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Jumlah Stok'
+              }
+            }
+          }
         }
       });
     });

@@ -48,4 +48,14 @@ class M_pengguna extends CI_Model
     {
         return $this->db->get('tbl_pengguna')->num_rows();
     }
+
+    public function get_stok_products()
+    {
+        $this->db->select('nama_barang, stok');
+        $this->db->from('tbl_barang'); // Sesuaikan dengan nama tabel yang sesuai
+        $this->db->order_by('stok', 'DESC');
+        $this->db->limit(10); // Mengambil 10 yang paling terbaru masuk ke databse
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

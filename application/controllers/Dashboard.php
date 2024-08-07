@@ -21,6 +21,7 @@ class Dashboard extends CI_Controller
             'suplier' => $this->_suplier(),
             'penjualan' => $this->_penjualan(),
             'pendapatan' => $this->_pendapatan(),
+            'grafikstok'=>  $this->M_pengguna->get_stok_products(),
         ]);
         $this->load->view('layouts/footer');
     }
