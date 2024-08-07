@@ -27,6 +27,7 @@
                                 <th>Harga Beli Terakhir</th>
                                 <th>Harga Jual</th>
                                 <th>Stok</th>
+                                <th>Satuan</th>
                                 <th>Foto</th>
                                 <th>Aksi</th>
                             </thead>
@@ -41,6 +42,7 @@
                                         <td>Rp<?= number_format($item['harga_beli']) ?></td>
                                         <td>Rp<?= number_format($item['harga']) ?></td>
                                         <td><?= $item['stok'] ?></td>
+                                        <td><?= $item['satuan'] ?></td>
                                         <td>
                                             <img src="<?= base_url('public/barang/' . $item['foto']) ?>" alt="" width="50">
                                         </td>

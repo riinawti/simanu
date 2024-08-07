@@ -50,7 +50,7 @@ class Pengguna extends CI_Controller
             $this->_view('create');
         } else {
             $this->M_pengguna->SetData();
-            $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
+            $this->session->set_flashdata('pesan', 'Data pengguna berhasil disimpan!!');
             redirect('pengguna');
         }
     }
@@ -69,14 +69,14 @@ class Pengguna extends CI_Controller
             $this->_view('edit', $data);
         } else {
             $this->M_pengguna->updateData();
-            $this->session->set_flashdata('pesan', 'Data berhasil diupdate!!');
+            $this->session->set_flashdata('pesan', 'Data pengguna berhasil diupdate!!');
             redirect('pengguna');
         }
     }
     public function delete($id)
     {
         $this->db->delete('tbl_barang', array('id_barang' => $id));
-        $this->session->set_flashdata('pesan', 'Data berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data pengguna berhasil dihapus!!');
         redirect('barang/index');
     }
 }

@@ -11,7 +11,7 @@
                             <div class="d-flex justify-content-between">
                                 <input type="date" class="form-control" name="tanggal_awal" required>
                                 <input type="date" class="form-control" name="tanggal_akhir" required>
-                                <button type="submit" name="" class="btn btn-success"> Cetak</button>
+                                <button type="submit" name="" class="btn" style="background-color: pink; color: white;">Print</button>
                             </div>
                         </form>
                     </div>

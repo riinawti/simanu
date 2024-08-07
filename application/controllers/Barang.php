@@ -74,7 +74,7 @@ class Barang extends CI_Controller
                 $uploaded_data = $this->upload->data();
                 $file_name = $uploaded_data['file_name'];
                 $this->M_barang->SetData($file_name);
-                $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
+                $this->session->set_flashdata('pesan', 'Data barang berhasil disimpan!!');
                 redirect('barang');
             }
         }
@@ -115,7 +115,7 @@ class Barang extends CI_Controller
             } else {
                 $this->M_barang->updateData();
             }
-            $this->session->set_flashdata('pesan', 'Data berhasil diedit!!');
+            $this->session->set_flashdata('pesan', 'Data barang berhasil diedit!!');
             redirect('barang');
         }
     }
@@ -123,7 +123,7 @@ class Barang extends CI_Controller
     public function delete($id)
     {
         $this->db->delete('tbl_barang', array('id_barang' => $id));
-        $this->session->set_flashdata('pesan', 'Data berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data barang berhasil dihapus!!');
         redirect('barang/index');
     }
 

@@ -55,7 +55,7 @@ class Angsuran extends CI_Controller
         } else {
 
             $this->M_angsuran->SetData();
-            $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
+            $this->session->set_flashdata('pesan', 'Data angsuran berhasil disimpan!!');
             redirect('angsuran');
         }
     }
@@ -69,7 +69,7 @@ class Angsuran extends CI_Controller
             $this->_view('edit');
         } else {
             $this->M_angsuran->updateData();
-            $this->session->set_flashdata('pesan', 'Data berhasil diupdate!!');
+            $this->session->set_flashdata('pesan', 'Data angsuran berhasil diupdate!!');
             redirect('angsuran');
         }
     }
@@ -91,7 +91,7 @@ class Angsuran extends CI_Controller
             ]);
         }
         $this->db->delete('tbl_angsuran', array('id_angsuran' => $id));
-        $this->session->set_flashdata('pesan', 'Data berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data angsuran berhasil dihapus!!');
         redirect('angsuran');
     }
 

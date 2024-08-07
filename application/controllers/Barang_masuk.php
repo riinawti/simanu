@@ -63,7 +63,7 @@ class Barang_Masuk extends CI_Controller
             $this->_view('create', $data);
         } else {
             $this->M_barang_masuk->SetData();
-            $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
+            $this->session->set_flashdata('pesan', 'Data barang masuk berhasil disimpan!!');
             redirect('barang_masuk');
         }
     }
@@ -80,7 +80,7 @@ class Barang_Masuk extends CI_Controller
         }
 
         $this->db->delete('tbl_pembelian', array('id_pembelian' => $id));
-        $this->session->set_flashdata('pesan', 'Data berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data barang masuk berhasil dihapus!!');
         redirect('barang_masuk/index');
     }
 }

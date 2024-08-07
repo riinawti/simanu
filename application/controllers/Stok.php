@@ -55,7 +55,7 @@ class Stok extends CI_Controller
             $this->_view('create');
         } else {
             $this->M_stok->SetData();
-            $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
+            $this->session->set_flashdata('pesan', 'Data stok berhasil disimpan!!');
             redirect('stok/index');
         }
     }
@@ -74,7 +74,7 @@ class Stok extends CI_Controller
             $this->_view('edit', $data);
         } else {
             $this->M_stok->updateData();
-            $this->session->set_flashdata('pesan', 'Data berhasil diupdate!!');
+            $this->session->set_flashdata('pesan', 'Data stok berhasil diupdate!!');
             redirect('stok/index');
         }
     }
@@ -82,7 +82,7 @@ class Stok extends CI_Controller
     public function delete($id)
     {
         $this->db->delete('tbl_stok', array('id_stok' => $id));
-        $this->session->set_flashdata('pesan', 'Data berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data stok berhasil dihapus!!');
         redirect('stok/index');
     }
 }

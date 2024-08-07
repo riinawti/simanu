@@ -55,7 +55,7 @@ class Suplier extends CI_Controller
             $this->_view('create');
         } else {
             $this->M_suplier->SetData();
-            $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
+            $this->session->set_flashdata('pesan', 'Data suplier berhasil disimpan!!');
             redirect('suplier/index');
         }
     }
@@ -74,7 +74,7 @@ class Suplier extends CI_Controller
             $this->_view('edit', $data);
         } else {
             $this->M_suplier->updateData();
-            $this->session->set_flashdata('pesan', 'Data berhasil diupdate!!');
+            $this->session->set_flashdata('pesan', 'Data suplier berhasil diupdate!!');
             redirect('suplier/index');
         }
     }
@@ -82,7 +82,7 @@ class Suplier extends CI_Controller
     public function delete($id)
     {
         $this->db->delete('tbl_suplier', array('id_suplier' => $id));
-        $this->session->set_flashdata('pesan', 'Data berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data suplier berhasil dihapus!!');
         redirect('suplier/index');
     }
 }

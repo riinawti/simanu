@@ -61,8 +61,8 @@
             <tr>
                 <td> <img src="<?= base_url('public/assets/img/login.png') ?>" width="120px"> </td>
                 <td class="tengah">
-                    <h2 style="margin-left: -200px;">RB RUSADI</h2>
-                    <b>Jalan Pandu Guntung Paikat,Kemuning Kecamatan Banjarbaru Selatan</b>/
+                    <h2 style="margin-left: -100px; margin-bottom: 0;">TB. RUSADI</h2>
+                    <b style="margin-left: -100px;">Jalan Pandu Guntung Paikat, Kemuning Kecamatan Banjarbaru Selatan</b>
                 </td>
             </tr>
         </table>
@@ -76,6 +76,7 @@
             <th>Nama Barang</th>
             <th>Harga</th>
             <th>Stok</th>
+            <th>Satuan</th>
         </thead>
         <tbody>
             <?php $i = 1;
@@ -87,6 +88,7 @@
                     <td><?= $item['nama_barang'] ?></td>
                     <td>Rp<?= number_format($item['harga']) ?></td>
                     <td><?= $item['stok'] ?></td>
+                    <td><?= $item['satuan'] ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

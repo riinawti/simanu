@@ -4,7 +4,7 @@
         <!-- Pesan Berjalan -->
         <div class="marquee-container">
             <div class="marquee">
-                Selamat Datang! Silahkan pilih menu untuk digunakan.
+                Selamat Datang! Silahkan pilih menu untuk digunakan
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@
                         <p class="small mb-5 text-gray-500">Toko Bangunan TB. Rusadi Banjarbaru</p>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31702.731341431024!2d114.82531420946515!3d-3.4465504110898066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de68722e54a9d29%3A0x7b2e8f9c16e38b1b!2sToko%20Bangunan%20TB.%20Rusadi!5e0!3m2!1sid!2sid!4v1696475676430!5m2!1sid!2sid" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         <!-- Tautan ke Lokasi -->
-                        <a href="https://maps.app.goo.gl/zAiaaGAKRsXRRDHy7" target="_blank" class="btn btn-primary mt-3">Lihat di Google Maps</a>
+                        <a href="https://maps.app.goo.gl/zAiaaGAKRsXRRDHy7" target="_blank" class="btn" style="background-color: #ff69b4; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px; margin-top: 10px;">Lihat di Google Maps</a>
                     </div>
                 </div>
             </div>

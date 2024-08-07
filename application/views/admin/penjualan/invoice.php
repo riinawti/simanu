@@ -177,7 +177,7 @@
 
             <tr class="heading">
                 <td>QTY</td>
-                <td>Barang</td>
+                <td>Nama Barang</td>
                 <td>Harga</td>
                 <td>Sub Total</td>
             </tr>
@@ -197,7 +197,7 @@
                 <?php if ($kredit) : ?>
                     <td>Rp 0</td>
                 <?php else : ?>
-                    <td> <?= number_format($total) ?></td>
+                    <td>Rp <?= number_format($total) ?></td>
                 <?php endif ?>
 
             </tr>

@@ -61,7 +61,7 @@ class Return_barang extends CI_Controller
             $this->_view('create', $data);
         } else {
             $this->M_return_barang->SetData();
-            $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
+            $this->session->set_flashdata('pesan', 'Data return berhasil disimpan!!');
             redirect('return_barang');
         }
     }
@@ -79,7 +79,7 @@ class Return_barang extends CI_Controller
             $this->_view('edit', $data);
         } else {
             $this->M_return_barang->updateData();
-            $this->session->set_flashdata('pesan', 'Data berhasil diedit!!');
+            $this->session->set_flashdata('pesan', 'Data return berhasil diedit!!');
             redirect('return_barang');
         }
     }
@@ -87,7 +87,7 @@ class Return_barang extends CI_Controller
     public function delete($id)
     {
         $this->db->delete('tbl_return', array('id_return' => $id));
-        $this->session->set_flashdata('pesan', 'Data berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data return berhasil dihapus!!');
         redirect('return_barang');
     }
 

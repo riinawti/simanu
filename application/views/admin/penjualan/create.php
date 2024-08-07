@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <h5><b>Keranjang <span class="badge bg-danger"><?= $jumlhItem ?></span></b></h5>
+                        <h5><b>Keranjang <span class="badge" style="background-color: #ff69b4; color: white;"><?= $jumlhItem ?></span></b></h5>
                     </div>
                     <!-- <div class="card-body table-responsive ">
                     <table class="table">
@@ -97,7 +97,7 @@
                         <table cellpadding="6" cellspacing="1" style="width:100%" class="table table-hover">
                             <tr>
                                 <th width="10px">QTY</th>
-                                <th>Obat</th>
+                                <th>Barang</th>
                                 <th style="text-align:right">Harga</th>
                                 <th style="text-align:right">Sub-Total</th>
                                 <th>Aksi</th>
@@ -169,7 +169,9 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Rp <?= number_format($o['harga']) ?></h5>
                                                 <p class="card-text"><?= $o['nama_barang'] ?></p>
-                                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i></button>
+                                                <button type="submit" class="btn" style="background-color: #ff69b4; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px;">
+                                                    <i class="fa-solid fa-cart-shopping"></i>
+                                                </button>
                                             </div>
                                         </div>
                                         <?= form_close() ?>

@@ -53,7 +53,7 @@ class Kategori extends CI_Controller
             $this->_view('create');
         } else {
             $this->M_kategori->SetData();
-            $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
+            $this->session->set_flashdata('pesan', 'Data kategori berhasil disimpan!!');
             redirect('kategori/index');
         }
     }
@@ -69,7 +69,7 @@ class Kategori extends CI_Controller
             $this->_view('edit', $data);
         } else {
             $this->M_kategori->updateData();
-            $this->session->set_flashdata('pesan', 'Data berhasil diupdate!!');
+            $this->session->set_flashdata('pesan', 'Data kategori berhasil diupdate!!');
             redirect('kategori/index');
         }
     }
@@ -77,7 +77,7 @@ class Kategori extends CI_Controller
     public function delete($id)
     {
         $this->db->delete('tbl_kategori', array('id_kategori' => $id));
-        $this->session->set_flashdata('pesan', 'Data berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data kategori berhasil dihapus!!');
         redirect('kategori/index');
     }
 }

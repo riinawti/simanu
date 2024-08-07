@@ -16,7 +16,7 @@
                                     <option value="masuk">Masuk</option>
                                     <option value="keluar">Keluar</option>
                                 </select>
-                                <button type="submit" name="" class="btn btn-success"> Cetak</button>
+                                <button type="submit" name="" class="btn" style="background-color: pink; color: white;">Print</button>
                             </div>
                         </form>
                     </div>

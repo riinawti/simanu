@@ -54,7 +54,7 @@ class Hutang extends CI_Controller
             $this->_view('edit', $data);
         } else {
             $this->M_hutang->updateData();
-            $this->session->set_flashdata('pesan', 'Data berhasil diupdate!!');
+            $this->session->set_flashdata('pesan', 'Data hutang berhasil diupdate!!');
             redirect('hutang');
         }
     }
@@ -62,7 +62,7 @@ class Hutang extends CI_Controller
     public function delete($id)
     {
         $this->db->delete('tbl_hutang', array('id_hutang' => $id));
-        $this->session->set_flashdata('pesan', 'Data berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data hutang berhasil dihapus!!');
         redirect('hutang');
     }
 }
