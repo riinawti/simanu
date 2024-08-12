@@ -42,16 +42,6 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Metode</label>
-                                <div class="col-sm-10">
-                                    <select name="metode" id="" class="form-control">
-                                        <option value="uang kembali" <?= $data['metode'] == 'uang kembali' ? 'selected' : '' ?>>Uang Kembali</option>
-                                        <option value="barang baru" <?= $data['metode'] == 'barang baru' ? 'selected' : '' ?>>Barang Baru</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Keterangan</label>
                                 <div class="col-sm-10"> <input type="text" class="form-control <?= form_error('keterangan') ? 'is-invalid' : '' ?>" id="inputText" name="keterangan" value="<?= $data['keterangan'] ?>"></div>

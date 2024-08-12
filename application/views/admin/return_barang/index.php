@@ -25,7 +25,6 @@
                                 <th>QTY</th>
                                 <th>Tanggal</th>
                                 <th>Keterangan</th>
-                                <th>Metode</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </thead>
@@ -38,7 +37,6 @@
                                         <td><?= $item['qty'] ?></td>
                                         <td><?= $item['tanggal'] ?></td>
                                         <td><?= $item['keterangan'] ?></td>
-                                        <td><?= $item['metode'] ?></td>
                                         <td><?= $item['status'] ?></td>
                                         <td>
                                             <a href="<?= base_url('return_barang/edit/' . $item['id_return']) ?>" class="badge bg-warning"><i class="fas fa-pen"></i> Edit</a>

@@ -27,7 +27,7 @@
                                 <small class="text-danger"> <?= form_error('tanggal'); ?></small>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">QTY</label>
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Jumlah</label>
                                 <div class="col-sm-10"> <input type="number" class="form-control <?= form_error('qty') ? 'is-invalid' : '' ?>" id="inputText" name="qty"></div>
                                 <small class="text-danger"> <?= form_error('qty'); ?></small>
                             </div>
@@ -38,16 +38,6 @@
                                     <select name="status" id="" class="form-control">
                                         <option value="pembelian">Pembelian</option>
                                         <option value="penjualan">Penjualan</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Metode</label>
-                                <div class="col-sm-10">
-                                    <select name="metode" id="" class="form-control">
-                                        <option value="uang kembali">Uang Kembali</option>
-                                        <option value="barang baru">Barang Baru</option>
                                     </select>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
 <main id="main" class="main">
     <div class="pagetitle my-3  ">
-        <h1>Data Piutang</h1>
+        <h1>Data Orang Piutang</h1>
     </div>
     <section class="section">
         <div class="row">

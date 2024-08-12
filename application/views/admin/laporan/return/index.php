@@ -28,7 +28,6 @@
                                 <th>Nama Barang</th>
                                 <th>Kategori</th>
                                 <th>QTY</th>
-                                <th>Metode</th>
                                 <th>Status</th>
                                 <th>Keterangan</th>
                             </thead>

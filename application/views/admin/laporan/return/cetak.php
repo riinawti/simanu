@@ -78,7 +78,6 @@
                 <th>Nama Barang</th>
                 <th>Kategori</th>
                 <th>QTY</th>
-                <th>Metode Return</th>
                 <th>Status</th>
                 <th>Keterangan</th>
             </thead>
@@ -91,7 +90,6 @@
                     <td><?= $item['nama_barang'] ?></td>
                     <td><?= $item['kategori'] ?></td>
                     <td><?= $item['qty'] ?></td>
-                    <td><?= $item['metode'] ?></td>
                     <td><?= $item['status'] ?></td>
                     <td><?= $item['keterangan'] ?></td>
                 </tr>

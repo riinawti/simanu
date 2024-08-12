@@ -29,7 +29,6 @@ class M_return_barang extends CI_Model
             'tanggal' => $this->input->post('tanggal'),
             'keterangan' => $this->input->post('keterangan'),
             'status' => $this->input->post('status'),
-            'metode' => $this->input->post('metode')
         ];
         $this->db->insert('tbl_return', $data);
     }
@@ -42,7 +41,6 @@ class M_return_barang extends CI_Model
             'tanggal' => $this->input->post('tanggal'),
             'keterangan' => $this->input->post('keterangan'),
             'status' => $this->input->post('status'),
-            'metode' => $this->input->post('metode')
         ];
         $this->db->where('id_return', $this->input->post('id'));
         $this->db->update('tbl_return', $data);

@@ -13,7 +13,7 @@
                         <form action="<?= base_url('barang/store') ?>" method="post" enctype="multipart/form-data">
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Barang</label>
-                                <div class="col-sm-10"> <input type="text" class="form-control <?= form_error('nama_barang') ? 'is-invalid' : '' ?>" id="inputText" name="nama_barang"></div>
+                                <div class="col-sm-10"> <input type="text" class="form-control <?= form_error('nama_barang') ? 'is-invalid' : '' ?>" id="inputText" name="nama_barang" placeholder="Masukkan nama barang, merek dan ukuran"></div>
                                 <small class="text-danger"> <?= form_error('kode'); ?></small>
                             </div>
                             <div class="row mb-3">
