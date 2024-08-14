@@ -35,6 +35,21 @@ class M_laporan extends CI_Model
 
         return $penjualan;
     }
+    
+    public function getPrintPembelian()
+    {
+        $tawal = $this->input->get('tanggal_awal');
+        $tahir = $this->input->get('tanggal_akhir');
+
+        // Query untuk mendapatkan data penjualan
+        $this->db->select('*');
+        $this->db->from('tbl_pembelian');
+        $this->db->join('tbl_suplier', 'tbl_suplier.id_suplier = tbl_pembelian.suplier_id');
+        $this->db->where('tanggal >=', $tawal);
+        $this->db->where('tanggal <=', $tahir);
+        $pembelian = $this->db->get()->result_array();
+        return $pembelian;
+    }
 
     public function getPrintTransaksi()
     {

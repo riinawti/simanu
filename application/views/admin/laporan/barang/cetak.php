@@ -83,7 +83,7 @@
             foreach ($data as $item) : ?>
                 <tr>
                     <td><?= $i++ ?></td>
-                    <td><?= $item['kode'] ?></td>
+                    <td><?= $item['kode_brg'] ?></td>
                     <td><?= $item['kategori'] ?></td>
                     <td><?= $item['nama_barang'] ?></td>
                     <td>Rp<?= number_format($item['harga']) ?></td>

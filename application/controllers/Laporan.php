@@ -32,6 +32,10 @@ class Laporan extends CI_Controller
 	{
 		$this->_view('penjualan/index');
 	}
+	public function pembelian()
+	{
+		$this->_view('pembelian/index');
+	}
 	public function transaksi()
 	{
 		$this->_view('transaksi/index');
@@ -69,6 +73,14 @@ class Laporan extends CI_Controller
 		// $data = $this->M_laporan->getPrintPenjualan();
 		$this->load->view('admin/laporan/penjualan/cetak', [
 			'data' => $this->M_laporan->getPrintPenjualan()
+		]);
+	}
+	
+	public function PrintPembelian()
+	{
+		// $data = $this->M_laporan->getPrintPembelian();
+		$this->load->view('admin/laporan/pembelian/cetak', [
+			'data' => $this->M_laporan->getPrintPembelian()
 		]);
 	}
 	public function PrintTransaksi()

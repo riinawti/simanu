@@ -26,7 +26,11 @@ class Auth extends CI_Controller
             ];
             $this->session->set_userdata($data);
             $this->session->set_flashdata('pesan', 'berhasil login');
-            redirect('dashboard');
+            if ($data['user']['role'] == 0) {
+                redirect('penjualan');
+            } else {
+                redirect('dashboard');
+            }
         } else {
             $this->session->set_flashdata('gagal', 'Login gagal!!');
             redirect('auth');

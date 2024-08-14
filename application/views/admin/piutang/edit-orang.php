@@ -1,13 +1,13 @@
 <main id="main" class="main">
     <div class="pagetitle my-3  ">
-        <h1>Data Hutang</h1>
+        <h1>Data Orang Piutang</h1>
     </div>
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h6>Form Edit Hutang</h6>
+                        <h6>Form Edit Data Orang Piutang</h6>
                     </div>
                     <div class="card-body p-4">
                         <form action="<?= base_url('piutang/updateOrang') ?>" method="post" enctype="multipart/form-data">
