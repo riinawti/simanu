@@ -7,16 +7,18 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex">
-                        <form action="<?= base_url('laporan/printReturn') ?>" method="">
+                        <form action="<?= base_url('laporan/return') ?>" method="get">
                             <div class="d-flex justify-content-between">
-                                <input type="date" class="form-control" name="tanggal_awal" required>
-                                <input type="date" class="form-control" name="tanggal_akhir" required>
-                                <select name="status" id="" class="form-control">
-                                    <option value="semua">--pilih--</option>
-                                    <option value="pembelian">Pembelian</option>
-                                    <option value="penjualan">Penjualan</option>
+                                <input type="date" class="form-control" name="tanggal_awal" value="<?= $tanggal_awal ?>" required>
+                                <input type="date" class="form-control" name="tanggal_akhir" value="<?= $tanggal_akhir ?>" required>
+                                <select name="status" class="form-control" require>
+                                    <option value="">--pilih--</option>
+                                    <option value="pembelian" <?= $status === 'pembelian' ? 'selected' : '' ?>>Pembelian</option>
+                                    <option value="penjualan" <?= $status === 'penjualan' ? 'selected' : '' ?>>Penjualan</option>
                                 </select>
-                                <button type="submit" name="" class="btn" style="background-color: pink; color: white;">Print</button>
+                                <button type="submit" class="btn" style="background-color: grey; color: white; margin-right: 10px;">Filter</button>
+                                <a href="<?= base_url('laporan/return') ?>" class="btn" style="background-color: lightgrey; color: black; margin-right: 10px;"><i class="fas fa-sync-alt"></i></a>
+                                <a href="<?= base_url('laporan/printReturn?tanggal_awal=' . ($tanggal_awal ?? '') . '&tanggal_akhir=' . ($tanggal_akhir ?? '') . '&status=' . ($status ?? '')) ?>" class="btn" style="background-color: pink; color: white;">Print</a>
                             </div>
                         </form>
                     </div>
@@ -31,7 +33,20 @@
                                 <th>Status</th>
                                 <th>Keterangan</th>
                             </thead>
-
+                            <tbody>
+                                <?php $i = 1;
+                                foreach ($data as $item) : ?>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
+                                        <td><?= $item['tanggal'] ?></td>
+                                        <td><?= $item['nama_barang'] ?></td>
+                                        <td><?= $item['kategori'] ?></td>
+                                        <td><?= $item['qty'] ?></td>
+                                        <td><?= $item['status'] ?></td>
+                                        <td><?= $item['keterangan'] ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -39,3 +54,9 @@
         </div>
     </section>
 </main>
+<script>
+    document.querySelector('a.btn-reset').addEventListener('click', function() {
+        // Mengarahkan ke URL tanpa parameter
+        window.location.href = '<?= base_url('laporan/return') ?>';
+    });
+</script>

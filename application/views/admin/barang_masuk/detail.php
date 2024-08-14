@@ -35,9 +35,9 @@
                                         <td><?= $item['nama_barang'] ?></td>
                                         <td>Rp<?= number_format($item['harga_beli']) ?></td>
                                         <td><?= $item['qty'] ?></td>
-                                        <td>Rp<?= number_format($item['qty'] * $item['harga']) ?></td>
+                                        <td>Rp<?= number_format($item['qty'] * $item['harga_beli']) ?></td>
                                     </tr>
-                                    <?php $total += $item['qty'] * $item['harga'] ?>
+                                    <?php $total += $item['qty'] * $item['harga_beli'] ?>
                                 <?php endforeach ?>
                             </tbody>
                             <tfoot>

@@ -72,15 +72,22 @@ class Barang_Masuk extends CI_Controller
 
     public function delete($id)
     {
+        // Ambil detail barang dari tabel tbl_pembelian_detail
         $barang = $this->db->get_where('tbl_pembelian_detail', ['pembelian_id' => $id])->result_array();
+
+        // Perbarui setiap item di tabel tbl_barang
         foreach ($barang as $b) {
-            $this->db->set('qty', 'qty - ' . (int)$b['qty'], FALSE);
-            $this->db->where('barang_id', $b['barang_id']);
-            $this->db->update('tbl_stok_barang');
+            $this->db->set('stok', 'stok - ' . (int)$b['qty'], FALSE); // Ganti 'qty' dengan nama kolom yang benar
+            $this->db->where('id_barang', $b['barang_id']); // Pastikan nama kolom id_barang benar
+            $this->db->update('tbl_barang'); // Pastikan nama tabel benar
         }
 
+        // Hapus data dari tabel tbl_pembelian
         $this->db->delete('tbl_pembelian', array('id_pembelian' => $id));
+
+        // Set pesan dan arahkan ke halaman
         $this->session->set_flashdata('pesan', 'Data barang masuk berhasil dihapus!!');
         redirect('barang_masuk/index');
     }
+
 }

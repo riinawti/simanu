@@ -77,8 +77,6 @@
             <th>Tanggal</th>
             <th>Metode</th>
             <th>Sub Total</th>
-            <th>Status Pengantaran</th>
-            <th>Alamat Pengantaran</th>
         </thead>
         <tbody>
             <?php $i = 1;
@@ -90,8 +88,6 @@
                     <td><?= $item['tanggal'] ?></td>
                     <td><?= $item['metode'] ?></td>
                     <td>Rp<?= number_format($item['total']) ?></td>
-                    <td><?= $item['status_pengantaran'] ?></td>
-                    <td><?= $item['pengantaran'] ?></td>
                 </tr>
                 <?php $total += $item['total'] ?>
             <?php endforeach; ?>

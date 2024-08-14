@@ -7,11 +7,13 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex">
-                        <form action="<?= base_url('laporan/printTransaksi') ?>" method="">
+                        <form action="<?= base_url('laporan/transaksi') ?>" method="get">
                             <div class="d-flex justify-content-between">
-                                <input type="date" class="form-control" name="tanggal_awal" required>
-                                <input type="date" class="form-control" name="tanggal_akhir" required>
-                                <button type="submit" name="" class="btn" style="background-color: pink; color: white;">Print</button>
+                                <input type="date" class="form-control" name="tanggal_awal" value="<?= $tanggal_awal ?>" required>
+                                <input type="date" class="form-control" name="tanggal_akhir" value="<?= $tanggal_akhir ?>" required>
+                                <button type="submit" class="btn" style="background-color: grey; color: white; margin-right: 10px;">Filter</button>
+                                <a href="<?= base_url('laporan/transaksi') ?>" class="btn" style="background-color: lightgrey; color: black; margin-right: 10px;"><i class="fas fa-sync-alt"></i></a>
+                                <a href="<?= base_url('laporan/printTransaksi?tanggal_awal=' . ($tanggal_awal ?? '') . '&tanggal_akhir=' . ($tanggal_akhir ?? '')) ?>" class="btn" style="background-color: pink; color: white;">Print</a>
                             </div>
                         </form>
                     </div>
@@ -23,9 +25,27 @@
                                 <th>Tanggal</th>
                                 <th>Metode</th>
                                 <th>Sub Total</th>
-                                <th>Status Pengantaran</th>
-                                <th>Alamat Pengantaran</th>
                             </thead>
+                            <tbody>
+                                <?php $i = 1;
+                                $total = 0;
+                                foreach ($data as $item) : ?>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
+                                        <td><?= $item['kd_penjualan'] ?></td>
+                                        <td><?= $item['tanggal'] ?></td>
+                                        <td><?= $item['metode'] ?></td>
+                                        <td>Rp<?= number_format($item['total']) ?></td>
+                                    </tr>
+                                    <?php $total += $item['total'] ?>
+                                <?php endforeach; ?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">Total Pendapatan</td>
+                                    <td colspan="4">Rp <?= number_format($total) ?></td>
+                                </tr>
+                            </tfoot>
 
                         </table>
                     </div>
@@ -34,3 +54,9 @@
         </div>
     </section>
 </main>
+<script>
+    document.querySelector('a.btn-reset').addEventListener('click', function() {
+        // Mengarahkan ke URL tanpa parameter
+        window.location.href = '<?= base_url('laporan/transaksi') ?>';
+    });
+</script>

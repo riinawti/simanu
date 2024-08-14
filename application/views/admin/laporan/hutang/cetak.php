@@ -80,6 +80,7 @@
                     <th>Tanggal Tempo</th>
                     <th>Nama Suplier</th>
                     <th>Total</th>
+                    <th>Total Bayar</th>
                     <th>Sisa</th>
                 </thead>
             </thead>
@@ -93,8 +94,9 @@
                     <td><?= $item['kd_hutang'] ?></td>
                     <td><?= $item['tanggal'] ?></td>
                     <td><?= $item['tanggal_tempo'] ?></td>
-                    <td><?= $item['nama'] ?> - <?= $item['telepon'] ?></td>
+                    <td><?= $item['nama'] ?></td>
                     <td>Rp<?= number_format($item['total']) ?></td>
+                    <td>Rp <?= number_format($item['total'] - ($item['sisa'])) ?></td>
                     <td>Rp<?= number_format($item['sisa']) ?></td>
                 </tr>
                 <?php $total +=  $item['total'];
@@ -105,6 +107,7 @@
             <tr>
                 <td colspan="5">Total Hutang</td>
                 <td>Rp <?= number_format($total) ?></td>
+                <td>Rp <?= number_format($total - $sisa) ?></td>
                 <td>Rp <?= number_format($sisa) ?></td>
             </tr>
         </tfoot>

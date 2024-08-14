@@ -86,7 +86,7 @@ class Piutang extends CI_Controller
     public function deleteOrang($id)
     {
         $this->db->delete('tbl_orang_hutang', array('id_oh' => $id));
-        $this->session->set_flashdata('pesan', 'Data piutang berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data orang piutang berhasil dihapus!!');
         redirect('piutang');
     }
     public function store()
@@ -113,7 +113,7 @@ class Piutang extends CI_Controller
                 $uploaded_data = $this->upload->data();
                 $file_name = $uploaded_data['file_name'];
                 $this->M_piutang->SetData($file_name);
-                $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
+                $this->session->set_flashdata('pesan', 'Data orang berhasil disimpan!!');
                 redirect('piutang');
             }
         }
@@ -152,7 +152,7 @@ class Piutang extends CI_Controller
             } else {
                 $this->M_piutang->updateOrang();
             }
-            $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
+            $this->session->set_flashdata('pesan', 'Data orang piutang berhasil diedit!!');
             redirect('piutang');
         }
     }

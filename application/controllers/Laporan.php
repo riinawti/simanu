@@ -30,36 +30,212 @@ class Laporan extends CI_Controller
 	}
 	public function penjualan()
 	{
-		$this->_view('penjualan/index');
+		// Ambil parameter tanggal dari GET request
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+
+		// Validasi tanggal
+		if ($tanggal_awal && $tanggal_akhir) {
+			// Ambil data berdasarkan filter tanggal
+			$data = $this->M_laporan->getFilteredPenjualan($tanggal_awal, $tanggal_akhir);
+		} else {
+			// Jika tidak ada filter, data default (kosong)
+			$data = [];
+			$tanggal_awal = '';
+			$tanggal_akhir = '';
+		}
+
+		// Tampilkan view dengan data yang sudah difilter (atau data default)
+		$this->_view('penjualan/index', [
+			'data' => $data,
+			'tanggal_awal' => $tanggal_awal,
+			'tanggal_akhir' => $tanggal_akhir
+		]);
 	}
+
+
 	public function pembelian()
 	{
-		$this->_view('pembelian/index');
+		// Ambil parameter tanggal dari GET request
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+
+		// Validasi tanggal
+		if ($tanggal_awal && $tanggal_akhir) {
+			// Ambil data berdasarkan filter tanggal
+			$data = $this->M_laporan->getFilteredPembelian($tanggal_awal, $tanggal_akhir);
+		} else {
+			// Jika tidak ada filter, data default (kosong)
+			$data = [];
+			$tanggal_awal = '';
+			$tanggal_akhir = '';
+		}
+
+		// Tampilkan view dengan data yang sudah difilter (atau data default)
+		$this->_view('pembelian/index', [
+			'data' => $data,
+			'tanggal_awal' => $tanggal_awal,
+			'tanggal_akhir' => $tanggal_akhir
+		]);
 	}
 	public function transaksi()
 	{
-		$this->_view('transaksi/index');
+		// Ambil parameter tanggal dari GET request
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+
+		// Validasi tanggal
+		if ($tanggal_awal && $tanggal_akhir) {
+			// Ambil data berdasarkan filter tanggal
+			$data = $this->M_laporan->getFilteredTransaksi($tanggal_awal, $tanggal_akhir);
+		} else {
+			// Jika tidak ada filter, data default (kosong)
+			$data = [];
+			// Nilai default untuk tanggal
+			$tanggal_awal = '';
+			$tanggal_akhir = '';
+		}
+
+		// Tampilkan view dengan data yang sudah difilter (atau data default)
+		$this->_view('transaksi/index', [
+			'data' => $data,
+			'tanggal_awal' => $tanggal_awal,
+			'tanggal_akhir' => $tanggal_akhir
+		]);
 	}
+
 	public function return()
 	{
-		$this->_view('return/index');
+		// Ambil parameter dari GET request
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+		$status = $this->input->get('status', TRUE); // Filter XSS
+
+		// Validasi tanggal
+		if ($tanggal_awal && $tanggal_akhir) {
+			// Ambil data berdasarkan filter tanggal dan status
+			$data = $this->M_laporan->getFilteredReturn($tanggal_awal, $tanggal_akhir, $status);
+		} else {
+			// Jika tidak ada filter, data default (kosong)
+			$data = [];
+			$tanggal_awal = '';
+			$tanggal_akhir = '';
+			$status = 'semua';
+		}
+
+		// Tampilkan view dengan data yang sudah difilter (atau data default)
+		$this->_view('return/index', [
+			'data' => $data,
+			'tanggal_awal' => $tanggal_awal,
+			'tanggal_akhir' => $tanggal_akhir,
+			'status' => $status
+		]);
 	}
+
+
 	public function hutang()
 	{
-		$this->_view('hutang/index');
+		// Ambil parameter dari GET request
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+
+		// Validasi tanggal
+		if ($tanggal_awal && $tanggal_akhir) {
+			// Ambil data berdasarkan filter tanggal
+			$data = $this->M_laporan->getFilteredHutang($tanggal_awal, $tanggal_akhir);
+		} else {
+			// Jika tidak ada filter, data default (kosong)
+			$data = [];
+			$tanggal_awal = '';
+			$tanggal_akhir = '';
+		}
+
+		// Tampilkan view dengan data yang sudah difilter (atau data default)
+		$this->_view('hutang/index', [
+			'data' => $data,
+			'tanggal_awal' => $tanggal_awal,
+			'tanggal_akhir' => $tanggal_akhir
+		]);
 	}
+
 	public function piutang()
 	{
-		$this->_view('piutang/index');
+		// Ambil parameter dari GET request
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+
+		// Validasi tanggal
+		if ($tanggal_awal && $tanggal_akhir) {
+			// Ambil data berdasarkan filter tanggal
+			$data = $this->M_laporan->getFilteredPiutang($tanggal_awal, $tanggal_akhir);
+		} else {
+			// Jika tidak ada filter, data default (kosong)
+			$data = [];
+			$tanggal_awal = '';
+			$tanggal_akhir = '';
+		}
+
+		// Tampilkan view dengan data yang sudah difilter (atau data default)
+		$this->_view('piutang/index', [
+			'data' => $data,
+			'tanggal_awal' => $tanggal_awal,
+			'tanggal_akhir' => $tanggal_akhir
+		]);
 	}
 	public function keuangan()
 	{
-		$this->_view('keuangan/index');
+		// Ambil parameter dari GET request
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+		$status = $this->input->get('status');
+
+		// Validasi tanggal
+		if ($tanggal_awal && $tanggal_akhir) {
+			// Ambil data berdasarkan filter tanggal dan status
+			$data = $this->M_laporan->getFilteredKeuangan($tanggal_awal, $tanggal_akhir, $status);
+		} else {
+			// Jika tidak ada filter, data default (kosong)
+			$data = [];
+			$tanggal_awal = '';
+			$tanggal_akhir = '';
+			$status = 'semua';
+		}
+
+		// Tampilkan view dengan data yang sudah difilter (atau data default)
+		$this->_view('keuangan/index', [
+			'data' => $data,
+			'tanggal_awal' => $tanggal_awal,
+			'tanggal_akhir' => $tanggal_akhir,
+			'status' => $status
+		]);
 	}
+
 	public function barang_keluar()
 	{
-		$this->_view('barang_keluar/index');
+		// Ambil parameter tanggal dari GET request
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+
+		// Validasi tanggal
+		if ($tanggal_awal && $tanggal_akhir) {
+			// Ambil data berdasarkan filter tanggal
+			$data = $this->M_laporan->getFilteredBarangKeluar($tanggal_awal, $tanggal_akhir);
+		} else {
+			// Jika tidak ada filter, data default (kosong)
+			$data = [];
+			// Parameter tanggal tidak ada
+			$tanggal_awal = '';
+			$tanggal_akhir = '';
+		}
+
+		// Tampilkan view dengan data yang sudah difilter (atau data default)
+		$this->_view('barang_keluar/index', [
+			'data' => $data,
+			'tanggal_awal' => $tanggal_awal,
+			'tanggal_akhir' => $tanggal_akhir
+		]);
 	}
+
 
 	public function Printbarang()
 	{
@@ -124,4 +300,25 @@ class Laporan extends CI_Controller
 			'data' => $this->M_laporan->getPrintBarangKeluar()
 		]);
 	}
+	public function filterBarangKeluar()
+	{
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+
+		// Validasi tanggal
+		if (!$tanggal_awal || !$tanggal_akhir) {
+			show_error('Tanggal awal dan akhir harus diisi.');
+		}
+
+		// Ambil data berdasarkan filter tanggal
+		$data = $this->M_laporan->getFilteredBarangKeluar($tanggal_awal, $tanggal_akhir);
+
+		// Tampilkan view dengan data yang sudah difilter
+		$this->load->view('admin/laporan/Barang_Keluar/index', [
+			'data' => $data,
+			'tanggal_awal' => $tanggal_awal,
+			'tanggal_akhir' => $tanggal_akhir
+		]);
+	}
+
 }

@@ -41,8 +41,8 @@
                                         <td>Rp <?= number_format($item['total']) ?></td>
                                         <td>Rp <?= number_format($item['sisa']) ?></td>
                                         <td>
-                                            <a href="<?= base_url('piutang/edit/' . $item['id_piutang']) ?>" class="badge bg-warning"><i class="fas fa-pen"></i> Edit</a>
-                                            <a href="<?= base_url('piutang/delete/' . $item['id_piutang']) ?>" class="badge bg-danger" onclick="return confirm('yakin untuk menghapus?')"><i class="fas fa-trash"></i> Hapus</a>
+                                            <a href="<?= base_url('piutang/edit/' . $item['id_piutang']) ?>
+                                            <a href="<?= base_url('piutang/delete/' . $item['id_piutang']) ?>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

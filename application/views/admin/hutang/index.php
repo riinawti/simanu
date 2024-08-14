@@ -26,6 +26,7 @@
                                 <th>Nama Suplier</th>
                                 <th>Tanggal Tempo</th>
                                 <th>Total</th>
+                                <th>Total Bayar</th>
                                 <th>Sisa</th>
                                 <th>Aksi</th>
                             </thead>
@@ -39,6 +40,7 @@
                                         <td><?= $item['nama'] ?></td>
                                         <td><?= $item['tanggal_tempo'] ?></td>
                                         <td>Rp <?= number_format($item['total']) ?></td>
+                                        <td>Rp <?= number_format($item['total'] - ($item['sisa'])) ?></td>
                                         <td>Rp <?= number_format($item['sisa']) ?></td>
                                         <td>
                                             <a href="<?= base_url('hutang/edit/' . $item['id_hutang']) ?>" class="badge bg-warning"><i class="fas fa-pen"></i> Edit</a>
