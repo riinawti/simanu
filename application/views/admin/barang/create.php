@@ -20,9 +20,22 @@
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Satuan</label>
                                 <div class="col-sm-10">
                                     <select name="satuan" id="" class="form-control">
+                                        <option value="buah">Buah</option>
                                         <option value="pcs">Pcs</option>
                                         <option value="sak">Sak</option>
+                                        <option value="dus">Dus</option>
+                                        <option value="batang">Batang</option>
+                                        <option value="roll">Roll</option>
                                         <option value="kaleng">Kaleng</option>
+                                        <option value="meter">Meter</option>
+                                        <option value="kg">KG</option>
+                                        <option value="kotak">Kotak</option>
+                                        <option value="liter">Liter</option>
+                                        <option value="box">Box</option>
+                                        <option value="pak">Pak</option>
+                                        <option value="gulung">Gulung</option>
+                                        <option value="lembar">Lembar</option>
+                                        <option value="karung">Karung</option>
                                     </select>
                                 </div>
                             </div>

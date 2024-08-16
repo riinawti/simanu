@@ -145,7 +145,7 @@
             <div class="col-7 mb-4 order-0">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <h5> <b>Barang</b></h5>
+                        <h5><b>Barang</b></h5>
                         <form action="" method="" class="d-flex">
                             <input type="text" class="form-control" placeholder="Nama Barang" name="q" value="<?= $this->input->get('q') ?>">
                             <button type="" name="" class="btn btn-secondary">Cari</button>
@@ -153,8 +153,12 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <?php if (!empty($barang)) : ?>
-                                <?php foreach ($barang as $o) : ?>
+                            <?php
+                            // Batasi jumlah barang yang ditampilkan
+                            $barang_limit = array_slice($barang, 0, 9);
+
+                            if (!empty($barang_limit)) : ?>
+                                <?php foreach ($barang_limit as $o) : ?>
                                     <div class="col-md-4">
                                         <?php
                                         echo form_open('penjualan/keranjang');

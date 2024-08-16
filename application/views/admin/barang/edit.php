@@ -22,9 +22,22 @@
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Satuan</label>
                                 <div class="col-sm-10">
                                     <select name="satuan" id="" class="form-control">
-                                        <option value="pcs" <?= $data['satuan'] == 'pcs' ? 'selected' : ''  ?>>Pcs</option>
-                                        <option value="sak" <?= $data['satuan'] == 'sak' ? 'selected' : ''  ?>>Sak</option>
-                                        <option value="kaleng" <?= $data['satuan'] == 'kaleng' ? 'selected' : ''  ?>>Kaleng</option>
+                                        <option value="buah" <?= $data['satuan'] == 'buah' ? 'selected' : '' ?>>Buah</option>
+                                        <option value="pcs" <?= $data['satuan'] == 'pcs' ? 'selected' : '' ?>>Pcs</option>
+                                        <option value="sak" <?= $data['satuan'] == 'sak' ? 'selected' : '' ?>>Sak</option>
+                                        <option value="dus" <?= $data['satuan'] == 'dus' ? 'selected' : '' ?>>Dus</option>
+                                        <option value="batang" <?= $data['satuan'] == 'batang' ? 'selected' : '' ?>>Batang</option>
+                                        <option value="roll" <?= $data['satuan'] == 'roll' ? 'selected' : '' ?>>Roll</option>
+                                        <option value="kaleng" <?= $data['satuan'] == 'kaleng' ? 'selected' : '' ?>>Kaleng</option>
+                                        <option value="meter" <?= $data['satuan'] == 'meter' ? 'selected' : '' ?>>Meter</option>
+                                        <option value="kg" <?= $data['satuan'] == 'kg' ? 'selected' : '' ?>>KG</option>
+                                        <option value="kotak" <?= $data['satuan'] == 'kotak' ? 'selected' : '' ?>>Kotak</option>
+                                        <option value="liter" <?= $data['satuan'] == 'liter' ? 'selected' : '' ?>>Liter</option>
+                                        <option value="box" <?= $data['satuan'] == 'box' ? 'selected' : '' ?>>Box</option>
+                                        <option value="pak" <?= $data['satuan'] == 'pak' ? 'selected' : '' ?>>Pak</option>
+                                        <option value="gulung" <?= $data['satuan'] == 'gulung' ? 'selected' : '' ?>>Gulung</option>
+                                        <option value="lembar" <?= $data['satuan'] == 'lembar' ? 'selected' : '' ?>>Lembar</option>
+                                        <option value="karung" <?= $data['satuan'] == 'karung' ? 'selected' : '' ?>>Karung</option>
                                     </select>
                                 </div>
                             </div>
