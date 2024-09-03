@@ -31,34 +31,36 @@
         }
       })
 
+      // tombaol tambah item di barang masuk
       function tes(response) {
-        var obatCount = 1;
+        var barangCount = 1;
         $('#tombol-item').on('click', function(e) {
           e.preventDefault();
-          obatCount++;
-          var newObatDiv = ` 
+          barangCount++;
+          var newBarangDiv = ` 
           <div class = "row mb-3" > 
-          <label for = "inputEmail3" class = "col-sm-2 col-form-label" > Nama Barang ${obatCount} </label> 
+          <label for = "inputEmail3" class = "col-sm-2 col-form-label" > Nama Barang ${barangCount} </label> 
           <div class = "col-sm-10" >
        <select name="barang[]" class="form-control">
                      ${generateOptions(response)}
                     </select> </div> 
           </div>
                 <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Harga ${obatCount}</label>
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Harga ${barangCount}</label>
                                 <div class="col-sm-10"> <input type="number" class="form-control" id="inputText" required name="harga_beli[]"></div>
                            
                             </div>
             <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Jumlah ${obatCount}</label>
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Jumlah ${barangCount}</label>
                                 <div class="col-sm-10"> <input type="number" class="form-control" id="inputText" required name="jumlah[]"></div>
                            
                             </div>
               `;
-          $('#barang-container').append(newObatDiv);
+          $('#barang-container').append(newBarangDiv);
         });
       }
 
+      //untuk tunai, diskon, penjualan di form pembayaran saat transaksi
       function generateOptions(response) {
         let optionsHTML = '';
         // Loop through the response data and generate HTML options
@@ -74,9 +76,12 @@
         if ($('#kredit').is(':checked')) {
           $('#tunaiInput').val(0).prop('readonly', true);
           $('#orang').show()
+        } else if ($('#transfer').is(':checked')) {
+          $('#tf').show()
         } else {
           $('#tunaiInput').val('').prop('readonly', false);
           $('#orang').hide()
+          $('#tf').hide()
         }
       });
       $('#diskon').on('change', function() {
@@ -103,6 +108,8 @@
 
     // })
 
+
+    // jenis pembayaraan saat angsuran maka akan muncul kode yang di pilih
     $('#jenis').change(function() {
       const opt = $(this).val();
       $.ajax({
@@ -142,7 +149,9 @@
       });
     });
   </script>
+
   <script>
+    //garfik stok barang
     document.addEventListener('DOMContentLoaded', function() {
       const grafikstok = <?php echo json_encode($grafikstok); ?>;
 

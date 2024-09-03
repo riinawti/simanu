@@ -1,6 +1,6 @@
 <main id="main" class="main">
     <div class="pagetitle my-3  ">
-        <h1>Data Penjualan</h1>
+        <h1>Riwayat Belanja</h1>
     </div>
     <?php if ($this->session->flashdata('pesan')) : ?>
         <div class="row">
@@ -14,9 +14,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header">
-                        <a href="<?= base_url('penjualan/create') ?>" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>Tambah Data</a>
-                    </div>
                     <div class="card-body p-4">
                         <table class="table table-hover" id="myTable">
                             <thead>
@@ -33,21 +30,15 @@
                             <!-- <?php var_dump($data) ?> -->
                             <tbody>
                                 <?php $i = 1;
-                                foreach ($penjualan as $item) : ?>
+                                foreach ($belanja as $item) : ?>
                                     <tr>
                                         <td><?= $i++ ?></td>
                                         <td><?= $item['kd_penjualan'] ?></td>
                                         <td><?= $item['tanggal'] ?></td>
-                                        <td>
-                                            <?= $item['metode'] ?>
-                                            <?php if ($item["metode"] == 'transfer'): ?>
-                                                <a href="<?= base_url('public/bukti_tf/' . $item["bukti_tf"]) ?>" class="ms-2" target="_blank">Download Bukti TF</a>
-                                            <?php endif ?>
-                                        </td>
+                                        <td><?= $item['metode'] ?></td>
                                         <td>Rp<?= number_format($item['total'], 0, ',', '.') ?></td>
                                         <td>
-                                            <a href="<?= base_url('penjualan/detail/' . $item['id_penjualan']) ?>" class="badge bg-info"><i class="fas fa-eye"></i> Detail</a>
-                                            <a href="<?= base_url('penjualan/delete/' . $item['id_penjualan']) ?>" class="badge bg-danger" onclick="return confirm('yakin untuk menghapus?')"><i class="fas fa-trash"></i> Hapus</a>
+                                            <a href="<?= base_url('pembeli/detail/' . $item['id_penjualan']) ?>" class="badge bg-info"><i class="fas fa-eye"></i> Detail</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

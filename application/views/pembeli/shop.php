@@ -1,6 +1,6 @@
 <main id="main" class="main">
     <div class="pagetitle my-3  ">
-        <h1>Form Penjualan</h1>
+        <h1>Keranjang Belanja</h1>
     </div>
     <section class="section">
         <?php if ($this->session->flashdata('error')) : ?>
@@ -93,11 +93,11 @@
                     </table>
                 </div> -->
                     <div class="card-body table-responsive">
-                        <?php echo form_open('penjualan/updateCart'); ?>
+                        <?php echo form_open('pembeli/updateCart'); ?>
                         <table cellpadding="6" cellspacing="1" style="width:100%" class="table table-hover">
                             <tr>
                                 <th width="10px">QTY</th>
-                                <th>Obat</th>
+                                <th>Barang</th>
                                 <th style="text-align:right">Harga</th>
                                 <th style="text-align:right">Sub-Total</th>
                                 <th>Aksi</th>
@@ -188,12 +188,12 @@
                 <div class="card p-3">
                     <div class="card-header">Pembayaran</div>
                     <div class="card-body">
-                        <form action="<?= base_url('penjualan/checkout') ?>" method="post">
+                        <form action="<?= base_url('pembeli/checkout') ?>" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-2">
                                         <label for="">Nama Pembeli</label>
-                                        <input type="text" name="nama" class="form-control" required>
+                                        <input type="text" name="nama" class="form-control" value="<?= $pembeli["nama"] ?>" required readonly>
                                     </div>
                                     <div>
                                         <label for="">Total</label>
@@ -204,56 +204,44 @@
                                     <div class="mb-2">
                                         <label for="">Metode</label>
                                         <div class="form-check ">
-                                            <input class="form-check-input" type="radio" name="metode" id="flexRadioDefault1" value="cash" checked>
+                                            <input class="form-check-input" type="radio" name="metode" id="flexRadioDefault1" value="cod" checked>
                                             <label class="form-check-label" for="flexRadioDefault1">
-                                                Cash
+                                                COD
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="metode" id="kredit" value="kredit">
+                                            <input class="form-check-input" type="radio" name="metode" id="transfer" value="transfer">
                                             <label class="form-check-label" for="flexRadioDefault2">
-                                                Kredit
+                                                Transfer
                                             </label>
                                         </div>
                                     </div>
-                                    <div>
-                                        <label for="">Diskon</label>
-                                        <input type="text" class="form-control" id="diskon" name="diskon">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" id="orang" style="display: none;">
-                                <label for="">Nama Penghutang</label>
-                                <select name="oh_id" id="" class="form-control">
-                                    <option disabled selected>--pilih--</option>
-                                    <?php foreach ($orang as $a) : ?>
-                                        <option value="<?= $a['id_oh'] ?>"><?= $a['nama'] ?>-<?= $a['nik'] ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="">Tunai</label>
-                                    <input type="number" class="form-control" id="tunaiInput">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div>
-                                        <label for="">Kembalian</label>
-                                        <input type="text" class="form-control" id="kembalian" readonly>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div>
                                         <label for="">Alamat Pengantaran</label>
-                                        <input type="text" class="form-control" name="pengantaran">
+                                        <input type="text" class="form-control" name="pengantaran" required>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Simpan</button>
+                            <div class="row mt-2" id="tf" style="display: none;">
+                                <div class="col">
+                                    <div>
+                                        <label for="">Bukti Transfer</label>
+                                        <input type="file" class="form-control" accept="image/png,image/jpg, image/jpeg" name="file">
+                                        <small class="text-muted">*JPEG MAX.2MB</small>
+                                        <div class="mt-2">
+                                            <p class="text-danger">*Silahkan transfer kerening 123457656666 - RINA (BRI)</p>
+                                            <p class="text-danger">*Setalah transfer upload bukti transfer nya,lalu klik tombol pesan dibawah ini</p>
+                                            <p class="text-danger">*Jika sudah berhasil dan keluar struk pembayaran nya silahkan konfirmasi ke whatshap 08234324324324 dengan mengirim struk pembayaran</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Pesan</button>
                         </form>
                     </div>
                 </div>

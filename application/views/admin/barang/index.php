@@ -72,8 +72,8 @@
                                                 <td><?= $item['kode_brg'] ?></td>
                                                 <td style="width: 150px;"><?= $item['kategori'] ?></td>
                                                 <td style="width: 300px;"><?= $item['nama_barang'] ?></td>
-                                                <td style="width: 150px;">Rp<?= number_format($item['harga_beli']) ?></td>
-                                                <td style="width: 150px;">Rp<?= number_format($item['harga']) ?></td>
+                                                <td style="width: 150px;">Rp<?= number_format($item['harga_beli'], 0, ',', '.') ?></td>
+                                                <td style="width: 150px;">Rp<?= number_format($item['harga'], 0, ',', '.') ?></td>
                                                 <td style="width: 100px;"><?= $item['stok'] ?></td>
                                                 <td style="width: 100px;"><?= $item['satuan'] ?></td>
                                                 <td>

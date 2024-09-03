@@ -31,8 +31,5 @@ class M_hutang extends CI_Model
         $this->db->update('tbl_hutang', $data);
     }
 
-    public function jumlah()
-    {
-        return $this->db->get('tbl_stok_barang')->num_rows();
-    }
+    
 }

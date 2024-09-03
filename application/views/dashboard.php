@@ -74,7 +74,7 @@
                                 <i class="fas fa-sack-dollar"></i>
                             </div>
                             <div class="ps-3">
-                                <h6 style="font-size: 20px;">Rp<?= $pendapatan == null ? '0' : number_format($pendapatan) ?></h6>
+                                <h6 style="font-size: 20px;">Rp<?= $pendapatan == null ? '0' : number_format($pendapatan, 0, ',', '.') ?></h6>
                             </div>
                         </div>
                     </div>

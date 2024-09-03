@@ -40,9 +40,9 @@
                                         <td><?= $item['tanggal'] ?></td>
                                         <td><?= $item['tanggal_tempo'] ?></td>
                                         <td><?= $item['nama'] ?></td>
-                                        <td>Rp<?= number_format($item['total']) ?></td>
-                                        <td>Rp <?= number_format($item['total'] - ($item['sisa'])) ?></td>
-                                        <td>Rp<?= number_format($item['sisa']) ?></td>
+                                        <td>Rp<?= number_format($item['total'], 0, ',', '.') ?></td>
+                                        <td>Rp <?= number_format($item['total'] - ($item['sisa']), 0, ',', '.') ?></td>
+                                        <td>Rp<?= number_format($item['sisa'], 0, ',', '.') ?></td>
                                     </tr>
                                     <?php $total +=  $item['total'];
                                     $sisa +=  $item['sisa']; ?>

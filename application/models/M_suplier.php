@@ -21,7 +21,7 @@ class M_suplier extends CI_Model
             'telepon' => $this->input->post('telepon'),
             'alamat' => $this->input->post('alamat'),
         ];
-        $this->db->insert('tbl_suplier', $data);
+        $this->db->insert('tbl_suplier', $data); 
     }
 
     public function updateData()
@@ -33,7 +33,7 @@ class M_suplier extends CI_Model
             'telepon' => $this->input->post('telepon'),
             'alamat' => $this->input->post('alamat'),
         ];
-        $this->db->where('id_suplier', $this->input->post('id'));
+        $this->db->where('id_suplier', $this->input->post('id')); 
         $this->db->update('tbl_suplier', $data);
     }
 

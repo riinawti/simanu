@@ -95,9 +95,9 @@
                     <td><?= $item['tanggal'] ?></td>
                     <td><?= $item['tanggal_tempo'] ?></td>
                     <td><?= $item['nama_pembeli'] ?></td>
-                    <td>Rp<?= number_format($item['total']) ?></td>
-                    <td>Rp <?= number_format($item['total'] - ($item['sisa'])) ?></td>
-                    <td>Rp<?= number_format($item['sisa']) ?></td>
+                    <td>Rp<?= number_format($item['total'], 0, ',', '.') ?></td>
+                    <td>Rp <?= number_format($item['total'] - ($item['sisa']), 0, ',', '.') ?></td>
+                    <td>Rp<?= number_format($item['sisa'], 0, ',', '.') ?></td>
                 </tr>
                 <?php $total +=  $item['total'];
                 $sisa +=  $item['sisa']; ?>
@@ -106,9 +106,9 @@
         <tfoot>
             <tr>
                 <td colspan="5">Total Piutang</td>
-                <td>Rp <?= number_format($total) ?></td>
-                <td>Rp <?= number_format($total - $sisa) ?></td>
-                <td>Rp <?= number_format($sisa) ?></td>
+                <td>Rp <?= number_format($total, 0, ',', '.') ?></td>
+                <td>Rp <?= number_format($total -$sisa, 0, ',', '.') ?></td>
+                <td>Rp <?= number_format($sisa, 0, ',', '.') ?></td>
             </tr>
         </tfoot>
     </table>

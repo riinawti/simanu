@@ -76,8 +76,5 @@ class M_angsuran extends CI_Model
         $this->db->update('tbl_angsuran', $data);
     }
 
-    public function jumlah()
-    {
-        return $this->db->get('tbl_stok_barang')->num_rows();
-    }
+  
 }

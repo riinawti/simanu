@@ -90,7 +90,7 @@
                     <td>
                         <ul>
                             <?php foreach ($item['detail'] as $d) : ?>
-                                <li><?= $d['nama_barang'] ?> - Rp<?= number_format($d['harga']) ?></li>
+                                <li><?= $d['nama_barang'] ?> - Rp<?= number_format($d['harga'], 0, ',', '.') ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </td>
@@ -101,7 +101,7 @@
                             <?php endforeach; ?>
                         </ul>
                     </td>
-                    <td>Rp<?= number_format($item['total']) ?></td>
+                    <td>Rp<?= number_format($item['total'], 0, ',', '.') ?></td>
                 </tr>
                 <?php $total += $item['total'] ?>
             <?php endforeach; ?>
@@ -109,7 +109,7 @@
         <tfoot>
             <tr>
                 <td colspan="5">Total Pendapatan</td>
-                <td>Rp <?= number_format($total) ?></td>
+                <td>Rp <?= number_format($total, 0, ',', '.') ?></td>
             </tr>
         </tfoot>
     </table>

@@ -44,7 +44,7 @@ class Penjualan extends CI_Controller
         if ($this->input->get('q')) {
             $barang =  $this->M_barang->searchbarang($this->input->get('q'));
         } else {
-            $barang =  $this->M_barang->getData();
+            $barang =  $this->M_barang->limitBarang();
         }
 
         $data = [
@@ -71,7 +71,7 @@ class Penjualan extends CI_Controller
     public function deleteCart($rowid)
     {
         $this->cart->remove($rowid);
-        redirect('penjualan/create');
+        redirect('pembeli');
     }
 
     // public function updateCart()
@@ -105,7 +105,7 @@ class Penjualan extends CI_Controller
     public function checkout()
     {
         $idPenjualan = $this->M_penjualan->Checkout($this->cart->contents());
-        $this->session->set_flashdata('pesan', 'Data penjualan berhasil disimpan!!');
+        $this->session->set_flashdata('pesan', 'Data berhasil disimpan!!');
         $this->session->unset_userdata('cart_items');
         if ($idPenjualan == 'habis') {
             $this->session->set_flashdata('error', 'Stok tidak cukup!!');
@@ -120,7 +120,7 @@ class Penjualan extends CI_Controller
     public function delete($id)
     {
         $this->db->delete('tbl_penjualan', array('id_penjualan' => $id));
-        $this->session->set_flashdata('pesan', 'Data penjualan berhasil dihapus!!');
+        $this->session->set_flashdata('pesan', 'Data berhasil dihapus!!');
         redirect('penjualan/index');
     }
 

@@ -35,7 +35,7 @@
                                         <td><?= $item['kd_penjualan'] ?></td>
                                         <td><?= $item['tanggal'] ?></td>
                                         <td><?= $item['metode'] ?></td>
-                                        <td>Rp<?= number_format($item['total']) ?></td>
+                                        <td>Rp<?= number_format($item['total'], 0, ',', '.') ?></td>
                                     </tr>
                                     <?php $total += $item['total'] ?>
                                 <?php endforeach; ?>
@@ -43,7 +43,7 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="4">Total Pendapatan</td>
-                                    <td colspan="4">Rp <?= number_format($total) ?></td>
+                                    <td colspan="4">Rp <?= number_format($total, 0, ',', '.') ?></td>
                                 </tr>
                             </tfoot>
 

@@ -39,9 +39,9 @@
                                         <td><?= $item['kd_beli'] ?></td>
                                         <td><?= $item['nama'] ?></td>
                                         <td><?= $item['tanggal_tempo'] ?></td>
-                                        <td>Rp <?= number_format($item['total']) ?></td>
-                                        <td>Rp <?= number_format($item['total'] - ($item['sisa'])) ?></td>
-                                        <td>Rp <?= number_format($item['sisa']) ?></td>
+                                        <td>Rp <?= number_format($item['total'], 0, ',', '.') ?></td>
+                                        <td>Rp <?= number_format($item['total'] - ($item['sisa']), 0, ',', '.') ?></td>
+                                        <td>Rp <?= number_format($item['sisa'], 0, ',', '.') ?></td>
                                         <td>
                                             <a href="<?= base_url('hutang/edit/' . $item['id_hutang']) ?>" class="badge bg-warning"><i class="fas fa-pen"></i> Edit</a>
                                             <a href="<?= base_url('hutang/delete/' . $item['id_hutang']) ?>" class="badge bg-danger" onclick="return confirm('yakin untuk menghapus?')"><i class="fas fa-trash"></i> Hapus</a>

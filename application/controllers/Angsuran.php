@@ -47,7 +47,7 @@ class Angsuran extends CI_Controller
 
     public function store()
     {
-        $this->form_validation->set_rules('tanggal_bayar', 'tanggal_bayar', 'required|trim');
+        $this->form_validation->set_rules('tanggal_bayar', 'tanggal_bayar', 'required|trim'); //validasi data harus diisi
         $this->form_validation->set_rules('jumlah', 'jumlah', 'required|trim');
         $this->form_validation->set_rules('status', 'status', 'required|trim');
         if ($this->form_validation->run() == false) {
@@ -62,7 +62,7 @@ class Angsuran extends CI_Controller
 
     public function update()
     {
-        $this->form_validation->set_rules('tanggal_bayar', 'tanggal_bayar', 'required|trim');
+        $this->form_validation->set_rules('tanggal_bayar', 'tanggal_bayar', 'required|trim'); //validasi data harus diisi
         $this->form_validation->set_rules('jumlah', 'jumlah', 'required|trim');
         $this->form_validation->set_rules('status', 'status', 'required|trim');
         if ($this->form_validation->run() == false) {

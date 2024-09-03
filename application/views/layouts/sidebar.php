@@ -5,8 +5,8 @@
     <ul class="sidebar-nav" id="sidebar-nav">
         <!-- Dashboard -->
 
-        <?php if ($user['role'] != 0) : // Sembunyikan Dashboard untuk Kasir 
-        ?>
+        <?php if ($user['role'] == 1 || $user['role'] == 2) :  
+            ?>
             <!-- Dashboard -->
             <li class="nav-item">
                 <a class="nav-link <?= $this->uri->segment(1) == 'dashboard' ? 'active' : '' ?>" href="<?= base_url('dashboard') ?>">
@@ -88,7 +88,18 @@
             </li>
         <?php endif ?>
         <?php if ($user['role'] == 0) : ?>
-            <li class="nav-item"> <a class="nav-link " href="<?= base_url('penjualan') ?>" class="<?= $this->uri->segment(1) == 'penjualan' ? 'active' : '' ?>"> <i class="fa-solid fa-money-check-dollar"></i> <span>Kasir</span> </a></li>
+            <li class="nav-heading">Kasir</li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#transaksi" data-bs-toggle="collapse" href="#"><i class="fa-solid fa-money-check-dollar"></i><span>Kasir</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+                <ul id="transaksi" class="nav-content collapse <?= $this->uri->segment(1) == 'penjualan' || $this->uri->segment(1) == 'penjualan' || $this->uri->segment(1) == 'piutang' || $this->uri->segment(1) == 'angsuran' ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
+                    <li> <a href="<?= base_url('penjualan') ?>" class="<?= $this->uri->segment(1) == 'penjualan' ? 'active' : '' ?>"> <i class="bi bi-circle"></i><span>Tampil Data</span> </a></li>
+                    <li> <a href="<?= base_url('penjualan/create') ?>" class="<?= $this->uri->segment(1) == 'hutang' ? 'active' : '' ?>"> <i class="bi bi-circle"></i><span>Tambah Data Penjualan</span> </a></li>
+                </ul>
+            </li>
+        <?php endif ?>
+        <?php if ($user['role'] == 3) : ?>
+            <li class="nav-item"> <a class="nav-link " href="<?= base_url('pembeli') ?>" class="<?= $this->uri->segment(1) == 'pembeli' ? 'active' : '' ?>"> <i class="fas fa-shopping-basket"></i><span>Belanja</span> </a></li>
+            <li class="nav-item"> <a class="nav-link " href="<?= base_url('pembeli/riwayat') ?>" class="<?= $this->uri->segment(2) == 'riwayat' ? 'active' : '' ?>"> <i class="fas fa-scroll"></i> <span>Riwayat Belanja</span> </a></li>
         <?php endif ?>
     </ul>
 </aside>

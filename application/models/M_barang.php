@@ -12,6 +12,17 @@ class M_barang extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function limitBarang(){
+        $this->db->select('*');
+        $this->db->from('tbl_barang');
+        $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_barang.kategori_id');
+        $this->db->limit(6); // Membatasi jumlah hasil menjadi 6
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
     public function getDataByID($id)
     {
         return $this->db->get_where('tbl_barang', array('id_barang' => $id))->row_array();

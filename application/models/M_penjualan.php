@@ -48,6 +48,25 @@ class M_penjualan extends CI_Model
             return   $this->_berhasilJual($result);
         }
     }
+    public function CheckoutPembeli($result)
+    {
+        //cek stok obat
+        $cek = false;
+        foreach ($result as $r) {
+            $stok_barang = $this->db->get_where('tbl_barang', ['id_barang' => $r['id']])->row_array();
+            $cekStok = $stok_barang['stok'] - $r['qty'];
+            if ($cekStok < 0) {
+                $cek = true;
+                break;
+            }
+        }
+        // var_dump($cek);
+        if ($cek == true) {
+            return 'habis';
+        } else {
+            return   $this->_berhasilJualPembeli($result);
+        }
+    }
 
     private function _berhasilJual($result)
     {
@@ -65,7 +84,7 @@ class M_penjualan extends CI_Model
             'pengantaran' => $this->input->post('pengantaran'),
             'status_pengantaran' => 'proses',
             'total' => $totalBayar,
-            'diskon' => $this->input->post('diskon'),
+            'diskon' =>  $this->input->post('diskon'),
             'total_bayar' => $this->input->post('total_bayar')
         ];
         $this->db->insert('tbl_penjualan', $dataPenjualan);
@@ -114,6 +133,79 @@ class M_penjualan extends CI_Model
         return $idPenjualan;
     }
 
+    private function _berhasilJualPembeli($result)
+    {
+        date_default_timezone_set('Asia/Makassar');
+        $totalBayar = 0;
+        foreach ($result as $r) {
+            $totalBayar += $r['subtotal'];
+        }
+
+        //upload file dulu
+        $buktiTF =  '';
+
+        $config['upload_path']          = FCPATH . 'public/bukti_tf';
+        $config['allowed_types']        = 'png|jpg|jpeg'; // Typo corrected
+        $config['max_size']             = 2200;
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('file')) {
+            $buktiTF =  '';
+        } else {
+            // saat berhasil ambil datanya
+            $uploaded_data = $this->upload->data();
+            $buktiTF = $uploaded_data['file_name'];
+        }
+
+
+
+        $dataPenjualan = [
+            'kd_penjualan' => 'PJ' . random_string('alnum', 3) . '-' . date('dmy'),
+            'nama_pembeli' => $this->input->post('nama'),
+            'tanggal' => date('Y-m-d H:i:s'),
+            'metode' => $this->input->post('metode'),
+            'pengantaran' => $this->input->post('pengantaran'),
+            'status_pengantaran' => 'proses',
+            'total' => $totalBayar,
+            'diskon' => 0,
+            'total_bayar' => $this->input->post('total_bayar'),
+            'bukti_tf' => $buktiTF
+        ];
+        $this->db->insert('tbl_penjualan', $dataPenjualan);
+        $idPenjualan = $this->db->insert_id();
+
+        foreach ($result as $r) {
+            $this->db->insert('tbl_penjualan_detail', [
+                'penjualan_id' => $idPenjualan,
+                'barang_id' => $r['id'],
+                'qty' => $r['qty'],
+            ]);
+            $this->cart->remove($r['rowid']);
+            $stok_barang = $this->db->get_where('tbl_barang', ['id_barang' => $r['id']])->row_array();
+            $this->db->where('id_barang', $r['id']);
+            $this->db->update('tbl_barang', [
+                'stok' => $stok_barang['stok'] - $r['qty']
+            ]);
+        }
+        if ($this->input->post('metode') == 'kredit') {
+            $this->db->insert('tbl_piutang', [
+                'kd_piutang' => 'PU-' . random_string('alnum', 3),
+                'penjualan_id' => $idPenjualan,
+                'total' => $totalBayar,
+                'sisa' =>  $totalBayar,
+                'oh_id' => $this->input->post('oh_id')
+            ]);
+        }
+        date_default_timezone_set('Asia/Makassar');
+        $this->db->insert('tbl_keuangan', [
+            'tanggal' => date("Y-m-d H:i:s"),
+            'total' => $totalBayar,
+            'status' => 'masuk',
+            'keterangan' => 'penjualan'
+        ]);
+        return $idPenjualan;
+    }
+
     public function updateData()
     {
         $data = [
@@ -132,5 +224,22 @@ class M_penjualan extends CI_Model
     public function getDataPengantaran()
     {
         return $this->db->get_where('tbl_penjualan', ['pengantaran !=' => ''])->result_array();
+    }
+
+    private function _uploadFile($result)
+    {
+        $config['upload_path']          = FCPATH . 'public/bukti_tf';
+        $config['allowed_types']        = 'png|jpg|jpeg'; // Typo corrected
+        $config['max_size']             = 2200;
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('file')) {
+            return false; // Pastikan untuk menghentikan eksekusi jika gagal
+        } else {
+            // saat berhasil ambil datanya
+            $uploaded_data = $this->upload->data();
+            $file_name = $uploaded_data['file_name'];
+            return $file_name;
+        }
     }
 }

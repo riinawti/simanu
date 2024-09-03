@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>SIMANU - Login</title>
+    <title>SIMANU - Daftar</title>
     <meta name="robots" content="noindex, nofollow">
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -33,16 +33,27 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="pt-4 pb-2">
-                                        <h5 class="card-title text-center pb-0 fs-4">Selamat Datang</h5>
-                                        <p class="text-center small">Masukan username & password untuk login</p>
+                                        <h5 class="card-title text-center pb-0 fs-4">Daftar Akun</h5>
+                                        <p class="text-center small">Masukan data dibawah ini untuk membuat akun</p>
                                         <?php if ($this->session->flashdata('gagal')) : ?>
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert"> <i class="bi bi-check-circle me-1"></i> <?= $this->session->flashdata('gagal'); ?> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
                                         <?php endif; ?>
-                                        <?php if ($this->session->flashdata('pesan')) : ?>
-                                            <div class="alert alert-success alert-dismissible fade show" role="alert"> <i class="bi bi-check-circle me-1"></i> <?= $this->session->flashdata('pesan'); ?> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
-                                        <?php endif; ?>
                                     </div>
-                                    <form class="row g-3" action="<?= base_url('auth/login') ?>" method="post">
+                                    <form class="row g-3" action="<?= base_url('auth/register') ?>" method="post">
+                                        <div class="col-12">
+                                            <label for="yourUsername" class="form-label">Email</label>
+                                            <div class="input-group has-validation">
+                                                <input type="text" name="email" class="form-control" id="yourUsername" required>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="yourUsername" class="form-label">Nama</label>
+                                            <div class="input-group has-validation">
+                                                <input type="text" name="nama" class="form-control" id="yourUsername" required>
+
+                                            </div>
+                                        </div>
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Username</label>
                                             <div class="input-group has-validation">
@@ -55,9 +66,9 @@
 
                                         </div>
 
-                                        <div class="col-12"> <button class="btn btn-primary w-100" type="submit">Login</button></div>
+                                        <div class="col-12"> <button class="btn btn-primary w-100" type="submit">Daftar</button></div>
                                     </form>
-                                    <a href="auth/daftar" class="mt-1">Daftar Akun</a>
+                                    <a href="<?= base_url('auth') ?>" class="mt-1">Login</a>
                                 </div>
                             </div>
 

@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header">
                         <a href="<?= base_url('penjualan') ?>" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i>Kembali</a>
-                        <a href="<?= base_url('penjualan/invoice/' . $penjualan[0]['id_penjualan']) ?>" class="btn" style="background-color: pink; color: white;" target="_blank"><i class="fas fa-print"></i>Print Invoide</a>
+                        <a href="<?= base_url('penjualan/invoice/' . $penjualan[0]['id_penjualan']) ?>" class="btn btn-sm btn-success" target="_blank"><i class="fas fa-print"></i>Print Invoide</a>
                     </div>
                     <div class="card-body p-4">
                         <table class="table table-hover" id="myTable">
@@ -35,9 +35,9 @@
                                     <tr>
                                         <td><?= $i++ ?></td>
                                         <td><?= $item['nama_barang'] ?></td>
-                                        <td>Rp<?= number_format($item['harga']) ?></td>
+                                        <td>Rp<?= number_format($item['harga'], 0, ',', '.') ?></td>
                                         <td><?= $item['qty'] ?></td>
-                                        <td>Rp<?= number_format($item['qty'] * $item['harga']) ?></td>
+                                        <td>Rp<?= number_format($item['qty'] * $item['harga'], 0, ',', '.') ?></td>
                                     </tr>
                                     <?php $total += $item['qty'] * $item['harga'] ?>
                                 <?php endforeach ?>
@@ -45,7 +45,7 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="4">Total Pembelian</td>
-                                    <td>Rp<?= number_format($total) ?></td>
+                                    <td>Rp<?= number_format($total, 0, ',', '.') ?></td>
                                 </tr>
                             </tfoot>
                         </table>

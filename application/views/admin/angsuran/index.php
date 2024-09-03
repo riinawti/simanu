@@ -34,7 +34,7 @@
                                         <td><?= $i++ ?></td>
                                         <td><?= $item['kd_angsuran'] ?></td>
                                         <td><?= $item['tanggal_bayar'] ?></td>
-                                        <td>Rp <?= number_format($item['jumlah']) ?></td>
+                                        <td>Rp <?= number_format($item['jumlah'], 0, ',', '.') ?></td>
                                         <td>
                                             <?= $item['status'] ?> - <?= $item['unik'] ?>
                                         </td>

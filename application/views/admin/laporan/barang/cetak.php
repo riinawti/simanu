@@ -86,7 +86,7 @@
                     <td><?= $item['kode_brg'] ?></td>
                     <td><?= $item['kategori'] ?></td>
                     <td><?= $item['nama_barang'] ?></td>
-                    <td>Rp<?= number_format($item['harga']) ?></td>
+                    <td>Rp<?= number_format($item['harga'], 0, ',', '.') ?></td>
                     <td><?= $item['stok'] ?></td>
                     <td><?= $item['satuan'] ?></td>
                 </tr>

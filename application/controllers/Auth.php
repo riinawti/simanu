@@ -13,6 +13,16 @@ class Auth extends CI_Controller
             $this->load->view('auth/login');
         }
     }
+    public function daftar()
+    {
+        $user = $this->session->userdata('user');
+        if ($user) {
+            redirect('dashboard');
+        } else {
+
+            $this->load->view('auth/daftar');
+        }
+    }
 
     public function login()
     {
@@ -28,6 +38,8 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('pesan', 'berhasil login');
             if ($data['user']['role'] == 0) {
                 redirect('penjualan');
+            } elseif ($data['user']['role'] == 3) {
+                redirect('pembeli');
             } else {
                 redirect('dashboard');
             }
@@ -40,6 +52,13 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->unset_userdata('user');
+        redirect('auth');
+    }
+
+    public function register()
+    {
+        $this->M_pengguna->register();
+        $this->session->set_flashdata('pesan', 'Pendaftaran berhasil,silahkan login!!');
         redirect('auth');
     }
 }

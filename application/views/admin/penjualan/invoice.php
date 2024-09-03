@@ -177,7 +177,7 @@
 
             <tr class="heading">
                 <td>QTY</td>
-                <td>Nama Barang</td>
+                <td>Barang</td>
                 <td>Harga</td>
                 <td>Sub Total</td>
             </tr>
@@ -187,8 +187,8 @@
                 <tr class="details">
                     <td><?= $i['qty'] ?></td>
                     <td><?= $i['nama_barang'] ?></td>
-                    <td>Rp <?= number_format($i['harga']) ?></td>
-                    <td>Rp <?= number_format($i['harga'] * $i['qty']) ?></td>
+                    <td>Rp <?= number_format($i['harga'], 0, ',', '.') ?></td>
+                    <td>Rp <?= number_format($i['harga'] * $i['qty'], 0, ',', '.') ?></td>
                 </tr>
                 <?php $total +=  $i['harga'] * $i['qty'] ?>
             <?php endforeach ?>
@@ -197,7 +197,7 @@
                 <?php if ($kredit) : ?>
                     <td>Rp 0</td>
                 <?php else : ?>
-                    <td>Rp <?= number_format($total) ?></td>
+                    <td> <?= number_format($total, 0, ',', '.') ?></td>
                 <?php endif ?>
 
             </tr>
@@ -207,39 +207,11 @@
         <br>
         <p>Terimakasih,Hormat kami</b></p>
         <P class="cetak" style="position: absolute;bottom: 0;right: 0; font-style: italic;"><b>Dicetak <?= date('d-M-Y') ?></b></P>
-        <p style="text-transform: uppercase;">TB.Rusadi</p>
-        <form action="penjualan/create" method="post" style="display: inline;">
-            <!-- Form elements here -->
-        </form>
-        <script>
-            // Simpan URL halaman asal di localStorage sebelum pencetakan
-            localStorage.setItem('referrer', document.referrer);
-
-            function redirectToReferrer() {
-                // Ambil URL halaman asal dari localStorage
-                const referrer = localStorage.getItem('referrer');
-
-                if (referrer) {
-                    // Alihkan ke URL halaman asal yang disimpan
-                    window.location.href = referrer;
-                } else {
-                    // URL fallback jika halaman asal tidak tersedia
-                    window.location.href = '<?= base_url('penjualan/create') ?>';
-                }
-
-                // Hapus halaman asal dari localStorage
-                localStorage.removeItem('referrer');
-            }
-
-            // Tambahkan event listener untuk setelah pencetakan
-            window.onafterprint = function() {
-                redirectToReferrer();
-            };
-
-            // Trigger dialog pencetakan
-            window.print();
-        </script>
+        <p style="text-transform: uppercase;">TB. Rusadi</p>
     </div>
+    <script>
+        window.print()
+    </script>
 </body>
 
 </html>

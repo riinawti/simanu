@@ -48,6 +48,17 @@ class M_pengguna extends CI_Model
     {
         return $this->db->get('tbl_pengguna')->num_rows();
     }
+    public function register()
+    {
+        $data = [
+            'nama' => $this->input->post('nama'),
+            'username' => $this->input->post('username'),
+            'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
+            'role' => 3,
+        ];
+        $this->db->insert('tbl_pengguna', $data);
+    }
+
 
     public function get_stok_products()
     {

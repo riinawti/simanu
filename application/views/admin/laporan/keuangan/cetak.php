@@ -92,14 +92,14 @@
                     <td><?= $item['tanggal'] ?></td>
                     <td>
                         <?php if ($item['status'] == 'masuk') : ?>
-                            Rp<?= number_format($item['total']) ?>
+                            Rp<?= number_format($item['total'], 0, ',', '.') ?>
                         <?php else : ?>
                             Rp<?= number_format(0) ?>
                         <?php endif ?>
                     </td>
                     <td>
                         <?php if ($item['status'] == 'keluar') : ?>
-                            Rp<?= number_format($item['total']) ?>
+                            Rp<?= number_format($item['total'], 0, ',', '.') ?>
                         <?php else : ?>
                             Rp<?= number_format(0) ?>
                         <?php endif ?>
@@ -118,12 +118,12 @@
         <tfoot>
             <tr>
                 <td colspan="2">Total Keuangan</td>
-                <td>Rp <?= number_format($masuk) ?></td>
-                <td>Rp <?= number_format($keluar) ?></td>
+                <td>Rp <?= number_format($masuk, 0, ',', '.') ?></td>
+                <td>Rp <?= number_format($keluar, 0, ',', '.') ?></td>
             </tr>
             <tr>
                 <td colspan="2">Selisih</td>
-                <td colspan="2" style="text-align: center;">Rp <?= number_format($masuk - $keluar) ?></td>
+                <td colspan="2" style="text-align: center;">Rp <?= number_format($masuk -$keluar, 0, ',', '.') ?></td>
             </tr>
         </tfoot>
     </table>

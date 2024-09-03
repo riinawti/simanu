@@ -38,7 +38,19 @@
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h6><?= $user['nama'] ?></h6>
-                            <span><?= $user['role'] ? 'Admin' : 'Kasir' ?></span>
+                            <span>
+                                <?php
+                                if ($user['role'] == 1) {
+                                    echo 'Admin';
+                                } elseif ($user['role'] == 0) {
+                                    echo 'Kasir';
+                                } elseif ($user['role'] == 2) {
+                                    echo 'Pemilik';
+                                } elseif ($user['role'] == 3) {
+                                    echo 'Pembeli';
+                                }
+                                ?>
+                            </span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
